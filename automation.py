@@ -5,7 +5,7 @@ def aws():
 	os.system("clear")
 	os.system("tput smso 5")
 	os.system("tput setaf 3")
-	print("\n\n\t\t\t  WELCOME TO THE AWS MENU  ")
+	print("\n\n\t\t\t  WELCOME TO THE Amazon Web Server MENU  ")
 	os.system("tput sgr 0 ")
 	while True:
 	
