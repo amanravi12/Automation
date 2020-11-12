@@ -20,7 +20,7 @@ def aws():
 		Press 5 : To start an instance
 		Press 6 : To stop an instance
 		Press 7 : To create an EBS volume of 1 GB.
-		Press 8 : To create S3 bucket
+		Press 8 : To create an S3 bucket
 		Press 9 : To upload an image in bucket
 		Press 10 : To create Cloudfront distribution
 		press 11 : To create Snapshot
