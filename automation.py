@@ -22,7 +22,7 @@ def aws():
 		Press 7 : To create an EBS volume of 1 GB.
 		Press 8 : To create an S3 bucket
 		Press 9 : To upload an image in bucket
-		Press 10 : To create Cloudfront distribution
+		Press 10 : To create Cloudfront Distribution
 		press 11 : To create Snapshot
 		press 12 : TO back main menu
 		press 13 : Close the program
