@@ -895,7 +895,7 @@ for w in "pass":
 		os.system("tput bold 0")
 		os.system("tput smso 0")
 		os.system("tput setaf 0")
-		print("\t\t\t2.🐳 Docker")
+		print("\t\t\t2.🐳 Docker") #docker
 		os.system("tput sgr0")
 		os.system("tput bold 2")
 		os.system("tput smso 2")
