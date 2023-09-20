@@ -1,154 +1,3 @@
-
-def aws():
-	import os
-	import time
-	os.system("clear")
-	os.system("tput smso 5")
-	os.system("tput setaf 3")
-	print("\n\n\t\t\t  WELCOME TO THE AWS MENU  ")
-	os.system("tput sgr 0 ")
-	while True:
-	
-		os.system("tput setaf 4")
-		#os.system("tput smul 4")
-		print("""
-		\n
-		Press 1 : To configure AWS
-		Press 2 : To create a key-pair
-		Press 3 : To create a security-group
-		Press 4 : To launch an instance
-		Press 5 : To start an instance
-		Press 6 : To stop an instance
-		Press 7 : To create an EBS volume of 1 GB.
-		Press 8 : To create an S3 bucket
-		Press 9 : To upload an image in bucket
-		Press 10 : To create Cloudfront Distribution
-		press 11 : To create Snapshot
-		press 12 : TO back main menu
-		press 13 : Close the program
-	
-		""")
-		os.system("tput sgr0")
-		os.system("tput bold 4")
-		os.system("tput setaf 4")
-		ch = input("Enter your choice : ")
-
-		#print("\nYour choice is {}".format(ch))
-	
-		if int(ch) == 1:
-		    os.system("tput sgr0")
-		    os.system("tput setaf 3")
-		    os.system("tput bold 3")
-		    os.system('aws configure')
-    
-		elif int(ch) ==2:
-		    os.system("tput sgr0")
-		    os.system("tput setaf 13")
-		    os.system("tput bold 13")
-		    keyname = input("\nEnter the keyname :- ")
-		    os.system('aws ec2 create-key-pair --key-name {}'.format(keyname))
-    
-		elif int(ch) ==3:
-		    os.system("tput sgr0")
-		    os.system("tput setaf 11")
-		    os.system("tput bold 11")	    
-		    description = input("\nEnter The Description :-")
-		    group_name = input("\nEnter The Group Name :-")
-		    os.system('aws ec2 create-security-group --description {} --group-name {}'.format(description, group_name ))
-   
-		elif int(ch) ==4:
-		    os.system("tput sgr0")
-		    os.system("tput setaf 10")
-		    os.system("tput bold 10")
-		    imageid =input("\nEnter the image id :- ")
-		    securityid = input("\nEnter the security group id :-")
-		    keyname = input("\nEnter the keyname :-")
-		    os.system('aws ec2 run-instances --image-id {} --instance-type t2.micro --security-group-ids {} --key-name {}'.format(imageid, securityid ,keyname))
-
-
-		elif int(ch) ==5:
-		    os.system("tput sgr0")
-		    os.system("tput setaf 9")
-		    os.system("tput bold 9")
-		    instanceid = input("\nEnter your instance-id :-")
-		    os.system('aws ec2 start-instances --instance-ids {}'.format(instanceid))
-   
-
-		elif int(ch) ==6:
-		    os.system("tput sgr0")
-		    os.system("tput setaf 11")
-		    os.system("tput bold 11")
-		    instanceid = input("\nEnter your instance-id :-")
-		    os.system('aws ec2 stop-instances --instance-ids {}'.format(instanceid))
-
-		elif int(ch) ==7:
-		    print("Select the Availabilty Zones ")
-		    print("""
-		        \n
-		        Press 1 : ap-south-1a
-		        Press 2 : ap-south-1b
-		        Press 3 : ap-south-1c
-		        """)
-		    s = input("\nSelect Availability Zone :-")
-		    if int(s) == 1:
-		        az = "ap-south-1a"
-		        os.system("aws ec2 create-volume --volume-type gp2 --size 1 --availability-zone ap-south-1a")
-		    elif int(s) == 2:
-		        az = "ap-south-1b"
-		        os.system("aws ec2 create-volume --volume-type gp2 --size 1 --availability-zone ap-south-1b")
-
-		    elif int(s) == 3:
-		        az = "ap-south-1c"
-		        os.system("aws ec2 create-volume --volume-type gp2 --size 1 --availability-zone ap-south-1c")
-
-
-		elif int(ch) ==8:
-		    os.system("tput sgr0")
-		    os.system("tput setaf 13")
-		    os.system("tput bold 13")
-		    bname = input("\nEnter the bucket name :-")
-		    region = input("\nEnter the region :-")
-		    os.system('aws s3api create-bucket --bucket {} --region {} --create-bucket-configuration LocationConstraint=ap-south-1'.format(bname, region))
-	
-		elif int(ch) ==9:
-		    os.system("tput sgr0")
-		    os.system("tput setaf 14")
-		    os.system("tput bold 14")
-		    bname = input("\nEnter your bucket name :-")
-		    location = input("\nEnter the loaction of image :-")
-		    iname = input("\nEnter image name :-")
-		    os.system('aws s3api put-object --bucket {} --body {} --key {}'.format(bname, location, iname))
-
-		elif int(ch) ==10:
-		    os.system("tput sgr0")
-		    os.system("tput setaf 11")
-		    os.system("tput bold 11")
-		    domain_name = input("\nEnter the Domain name :-")
-		    iname = input("\nEnter the image name :-")
-		    os.system('aws cloudfront create-distribution --origin-domain-name {}.s3.amazonaws.com --default-root-object {}'.format(domain_name,iname))
-
-		elif int(ch) ==11:
-		    vd =input("Enter the volume id :- ")
-		    desc =input("Enter the description :- ")
-		    os.system("aws ec2 create-snapshot --volume-id {} --description {}".format(vd,desc))
-
-		elif int(ch) ==12:
-		    break
-
-		elif int(ch) ==13:
-		    print("BYE BYE ...")
-		    time.sleep(2)
-		    exit()
-
-		else :
-		    os.system("tput setaf 9")
-		    print("\n\tIt is not in the menu")
-		    os.system("tput setaf 5")
-		    print("\n\t Renter Your Choice")
-		    os.system("tput setaf 7")
-
-
-
 def linux():
 
 	import os
@@ -376,6 +225,160 @@ def web():
 	        system("tput setaf 1")
 	        print("\nWrong Choice\nTry again")
 	        sleep(2)
+
+
+
+
+def aws():
+	import os
+	import time
+	os.system("clear")
+	os.system("tput smso 5")
+	os.system("tput setaf 3")
+	print("\n\n\t\t\t  WELCOME TO THE AWS MENU  ")
+	os.system("tput sgr 0 ")
+	while True:
+	
+		os.system("tput setaf 4")
+		#os.system("tput smul 4")
+		print("""
+		\n
+		Press 1 : To configure AWS
+		Press 2 : To create a key-pair
+		Press 3 : To create a security-group
+		Press 4 : To launch an instance
+		Press 5 : To start an instance
+		Press 6 : To stop an instance
+		Press 7 : To create an EBS volume of 1 GB.
+		Press 8 : To create an S3 bucket
+		Press 9 : To upload an image in bucket
+		Press 10 : To create Cloudfront Distribution
+		press 11 : To create Snapshot
+		press 12 : TO back main menu
+		press 13 : Close the program
+	
+		""")
+		os.system("tput sgr0")
+		os.system("tput bold 4")
+		os.system("tput setaf 4")
+		ch = input("Enter your choice : ")
+
+		#print("\nYour choice is {}".format(ch))
+	
+		if int(ch) == 1:
+		    os.system("tput sgr0")
+		    os.system("tput setaf 3")
+		    os.system("tput bold 3")
+		    os.system('aws configure')
+    
+		elif int(ch) ==2:
+		    os.system("tput sgr0")
+		    os.system("tput setaf 13")
+		    os.system("tput bold 13")
+		    keyname = input("\nEnter the keyname :- ")
+		    os.system('aws ec2 create-key-pair --key-name {}'.format(keyname))
+    
+		elif int(ch) ==3:
+		    os.system("tput sgr0")
+		    os.system("tput setaf 11")
+		    os.system("tput bold 11")	    
+		    description = input("\nEnter The Description :-")
+		    group_name = input("\nEnter The Group Name :-")
+		    os.system('aws ec2 create-security-group --description {} --group-name {}'.format(description, group_name ))
+   
+		elif int(ch) ==4:
+		    os.system("tput sgr0")
+		    os.system("tput setaf 10")
+		    os.system("tput bold 10")
+		    imageid =input("\nEnter the image id :- ")
+		    securityid = input("\nEnter the security group id :-")
+		    keyname = input("\nEnter the keyname :-")
+		    os.system('aws ec2 run-instances --image-id {} --instance-type t2.micro --security-group-ids {} --key-name {}'.format(imageid, securityid ,keyname))
+
+
+		elif int(ch) ==5:
+		    os.system("tput sgr0")
+		    os.system("tput setaf 9")
+		    os.system("tput bold 9")
+		    instanceid = input("\nEnter your instance-id :-")
+		    os.system('aws ec2 start-instances --instance-ids {}'.format(instanceid))
+   
+
+		elif int(ch) ==6:
+		    os.system("tput sgr0")
+		    os.system("tput setaf 11")
+		    os.system("tput bold 11")
+		    instanceid = input("\nEnter your instance-id :-")
+		    os.system('aws ec2 stop-instances --instance-ids {}'.format(instanceid))
+
+		elif int(ch) ==7:
+		    print("Select the Availabilty Zones ")
+		    print("""
+		        \n
+		        Press 1 : ap-south-1a
+		        Press 2 : ap-south-1b
+		        Press 3 : ap-south-1c
+		        """)
+		    s = input("\nSelect Availability Zone :-")
+		    if int(s) == 1:
+		        az = "ap-south-1a"
+		        os.system("aws ec2 create-volume --volume-type gp2 --size 1 --availability-zone ap-south-1a")
+		    elif int(s) == 2:
+		        az = "ap-south-1b"
+		        os.system("aws ec2 create-volume --volume-type gp2 --size 1 --availability-zone ap-south-1b")
+
+		    elif int(s) == 3:
+		        az = "ap-south-1c"
+		        os.system("aws ec2 create-volume --volume-type gp2 --size 1 --availability-zone ap-south-1c")
+
+
+		elif int(ch) ==8:
+		    os.system("tput sgr0")
+		    os.system("tput setaf 13")
+		    os.system("tput bold 13")
+		    bname = input("\nEnter the bucket name :-")
+		    region = input("\nEnter the region :-")
+		    os.system('aws s3api create-bucket --bucket {} --region {} --create-bucket-configuration LocationConstraint=ap-south-1'.format(bname, region))
+	
+		elif int(ch) ==9:
+		    os.system("tput sgr0")
+		    os.system("tput setaf 14")
+		    os.system("tput bold 14")
+		    bname = input("\nEnter your bucket name :-")
+		    location = input("\nEnter the loaction of image :-")
+		    iname = input("\nEnter image name :-")
+		    os.system('aws s3api put-object --bucket {} --body {} --key {}'.format(bname, location, iname))
+
+		elif int(ch) ==10:
+		    os.system("tput sgr0")
+		    os.system("tput setaf 11")
+		    os.system("tput bold 11")
+		    domain_name = input("\nEnter the Domain name :-")
+		    iname = input("\nEnter the image name :-")
+		    os.system('aws cloudfront create-distribution --origin-domain-name {}.s3.amazonaws.com --default-root-object {}'.format(domain_name,iname))
+
+		elif int(ch) ==11:
+		    vd =input("Enter the volume id :- ")
+		    desc =input("Enter the description :- ")
+		    os.system("aws ec2 create-snapshot --volume-id {} --description {}".format(vd,desc))
+
+		elif int(ch) ==12:
+		    break
+
+		elif int(ch) ==13:
+		    print("BYE BYE ...")
+		    time.sleep(2)
+		    exit()
+
+		else :
+		    os.system("tput setaf 9")
+		    print("\n\tIt is not in the menu")
+		    os.system("tput setaf 5")
+		    print("\n\t Renter Your Choice")
+		    os.system("tput setaf 7")
+
+
+
 
 
 
